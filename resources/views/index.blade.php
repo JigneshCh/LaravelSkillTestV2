@@ -50,16 +50,32 @@
                                                             <th  >Created_at</td>
                                                             
                                                         </tr>
+														 @php 
+														 $totalPrice = 0;
+														 @endphp
                                                          @foreach($data as $item)
                                                         <tr >
+															@php 
+															 $totalValue = floatval($item['price']) * floatval($item['qty']);	
+															 $totalPrice += $totalValue;
+															 @endphp
                                                             <td  >{{$item['name']}}</td>
                                                             <td  >{{$item['qty']}}</td>
                                                             <td  >{{$item['price']}}</td>
-                                                            <td  >{{ floatval($item['price']) * floatval($item['qty']) }}</td>
+                                                            <td  >{{ $totalValue }}</td>
 															<td  >{{$item['created_at']}}</td>
                                                             
                                                         </tr>
                                                         @endforeach
+														
+														<tr >
+                                                            <th  ></td>
+                                                            <th  ></td>
+                                                            <th  ></td>
+                                                            <th  > {{$totalPrice}}</td>
+                                                            <th  ></td>
+                                                            
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
